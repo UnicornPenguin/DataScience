@@ -2,6 +2,7 @@ using CSV
 using DataFrames
 using Dates
 using ScientificTypes
+using Statistics
 
 include("helpers.jl")
 include("../../data/dictionaries/binary_flags.jl")
@@ -61,5 +62,7 @@ rename!(df, "tmin" => "min_temp")
 column_order = [ :date, :location, :precipitation, :t_precipitation, :wind_speed, :t_wind_speed, :snowfall, :t_snowfall, :max_temp, :min_temp ]
 
 select!(df, column_order)
+
+
 
 # CSV.write("data/processed/weather.csv", df)

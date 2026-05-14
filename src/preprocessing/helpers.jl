@@ -51,11 +51,34 @@ function agregate_distribute(df::DataFrame; by_col=:date)
 
 
             #SECTION - north
-            :north => mean => :north_daily,
+            :north => mean        => :north_mean,
+            :north => sum         => :north_daily,
+            :north => maximum     => :north_max,
+            :north => minimum     => :north_min,
+            :north => std         => :north_std,
+            :north => data_range  => :north_range,
+            :north => load_factor => :north_load_factor,
+            :north => peak_ratio  => :north_peak_ratio,
+            
             #SECTION - scent
-            :scent => mean => :scent_daily,
+            :scent => mean        => :scent_mean,
+            :scent => sum         => :scent_daily,
+            :scent => maximum     => :scent_max,
+            :scent => minimum     => :scent_min,
+            :scent => std         => :scent_std,
+            :scent => data_range  => :scent_range,
+            :scent => load_factor => :scent_load_factor,
+            :scent => peak_ratio  => :scent_peak_ratio,
+
             #SECTION - ercot
-            :ercot => mean => :ercot_daily
+            :ercot => mean        => :ercot_mean,
+            :ercot => sum         => :ercot_daily,
+            :ercot => maximum     => :ercot_max,
+            :ercot => minimum     => :ercot_min,
+            :ercot => std         => :ercot_std,
+            :ercot => data_range  => :ercot_range,
+            :ercot => load_factor => :ercot_load_factor,
+            :ercot => peak_ratio  => :ercot_peak_ratio
             )
 
     return agregated_df

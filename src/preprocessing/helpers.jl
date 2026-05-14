@@ -24,20 +24,30 @@ end
 # load_factor
 # peak_ratio
 
+function data_range(x)
+    return maximum(x) - minimum(x)
+end
+
+function load_factor(x)
+    return mean(x) / maximum(x)
+end
+
+function peak_ratio(x)
+    return maximum(x) / mean(x)
+end
+
 function agregate_distribute(df::DataFrame; by_col=:date)
         agregated_df = combine(
             groupby(df, by_col),
             #SECTION - coast
-            :coast => mean    => :coast_mean,
-            :coast => sum     => :coast_daily,
-            :coast => maximum => :coast_max,
-            :coast => minimum => :coast_min,
-            :coast => std     => :coast_std,
-            :coast => ((x) -> maximum(x) - minimum(x)) => :coast_range,
-            :coast => ((x) -> mean(x) / maximum(x)) => :coast_load_factor,
-            :coast => ((x) -> maximum(x) / mean(x)) => :coast_peak_ratio,
-
-
+            :coast => mean        => :coast_mean,
+            :coast => sum         => :coast_daily,
+            :coast => maximum     => :coast_max,
+            :coast => minimum     => :coast_min,
+            :coast => std         => :coast_std,
+            :coast => data_range  => :coast_range,
+            :coast => load_factor => :coast_load_factor,
+            :coast => peak_ratio  => :coast_peak_ratio,
 
 
             #SECTION - north

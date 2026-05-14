@@ -23,13 +23,19 @@ for col in columns
     df[!, col] = parse_numbers.(df[!,col])
 end
 
-# groupby(df, :date)
-
-# CSV.write("data/processed/energy.csv", df)
-
 #!SECTION - TODO 
-# HUSTON - COAST
+# HOUSTON - COAST
 # DALLAS - NORTH
 # AUSTIN - SCENT
 # SAN ANTONIO - SCENT
-# ew. ercot jako dodatkowa miara, lub w ogóle zmienna opisywana
+# ercot jako dodatkowa miara - zmienna opisywana dla drugiego zestawu modeli
+
+
+agregated_df = agregate_distribute(df)
+
+
+
+
+
+# CSV.write("data/processed/energy.csv", df)
+
